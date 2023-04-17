@@ -14,7 +14,8 @@
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"build": "tsc",
-		"test": "vitest run --passWithNoTests",
+		"test": "vitest --run --passWithNoTests",
+		"bench": "vitest bench --run",
 		"format": "prettier --write ."
 	},
 	"devDependencies": {

@@ -28,8 +28,6 @@ describe("makeObject", () => {
 			"hello.world[1]": "test2"
 		});
 
-		console.log(path_map);
-
 		expect(makeObject(path_map)).toEqual({
 			hello: {
 				world: {

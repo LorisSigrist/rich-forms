@@ -73,7 +73,6 @@ It also integrates very well with component libraries like Svelte and Vue.
 			<button type="button" on:click={()=>remove_address(field.id)}>Remove Address</button>
 		</fieldset>
     {/each}
-
     <button type="button" on:click={add_address}>Add Address</button>
 </form>
 ```

@@ -1,6 +1,7 @@
 import { populate_arrays } from "./populate-arrays";
 import { populate_booleans } from "./populate-booleans";
 import { makeObject } from "./populate";
+import { createPathMap } from "./path";
 
 type FullParseOptions = {
 	/**
@@ -46,7 +47,9 @@ export function parse(
 		key_val[key] = value;
 	}
 
-	let object = makeObject(key_val);
+	const path_map = createPathMap(key_val);
+	let object = makeObject(path_map);
+
 	if (fullOptions.populate_arrays) object = populate_arrays(object);
 	if (fullOptions.populate_booleans) populate_booleans(object);
 	return object;

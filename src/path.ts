@@ -42,3 +42,14 @@ export function parsePath(str: string): string[] {
 
 	return path;
 }
+
+export function createPathMap(
+	keyval: Record<string, FormDataEntryValue>
+): Map<string[], FormDataEntryValue> {
+	const map = new Map<string[], FormDataEntryValue>();
+	for (const [key, value] of Object.entries(keyval)) {
+		const path = parsePath(key);
+		map.set(path, value);
+	}
+	return map;
+}

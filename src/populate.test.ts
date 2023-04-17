@@ -1,29 +1,36 @@
 import { describe, it, expect } from "vitest";
 import { makeObject } from "./populate";
+import { createPathMap } from "./path";
 
 describe("makeObject", () => {
 	it("should populate a simple object", () => {
-		expect(makeObject({ hello: "world" })).toEqual({ hello: "world" });
+		const path_map = createPathMap({ hello: "world" });
+		expect(makeObject(path_map)).toEqual({ hello: "world" });
 	});
 
 	it("should populate a simple object with a dot", () => {
-		expect(makeObject({ "hello.world": "test" })).toEqual({
+		const path_map = createPathMap({ "hello.world": "test" });
+		expect(makeObject(path_map)).toEqual({
 			hello: { world: "test" }
 		});
 	});
 
 	it("should populate a simple object with a dot and a bracket", () => {
-		expect(makeObject({ "hello[0]": "test" })).toEqual({
-			hello: {
-				0: "test"
-			}
+		const path_map = createPathMap({ "hello.world[0]": "test" });
+		expect(makeObject(path_map)).toEqual({
+			hello: { world: { 0: "test" } }
 		});
 	});
 
 	it("should populate an object when given multiple paths", () => {
-		expect(
-			makeObject({ "hello.world[0]": "test", "hello.world[1]": "test2" })
-		).toEqual({
+		const path_map = createPathMap({
+			"hello.world[0]": "test",
+			"hello.world[1]": "test2"
+		});
+
+		console.log(path_map);
+
+		expect(makeObject(path_map)).toEqual({
 			hello: {
 				world: {
 					0: "test",

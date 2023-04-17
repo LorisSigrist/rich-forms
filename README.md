@@ -42,8 +42,6 @@ It also integrates very well with component libraries like Svelte and Vue.
 <script>
     import { parse } from "rich-forms";
 
-    let number_of_addresses = 1;
-
     function handle_submit(event) {
         event.preventDefault();
         const form = event.target;
@@ -51,15 +49,30 @@ It also integrates very well with component libraries like Svelte and Vue.
         const data = parse(formData);
         console.log(data); // { addresses: [ {street: '123 Main St', city: 'Anytown', zip: '12345'}] }
     }
+
+	let address_fields = [{id: 0}];
+	
+	function add_address() {
+		address_fields.push({ id: Math.random() })
+		address_fields = address_fields  
+	}
+	
+	function remove_address(id) {
+		address_fields = address_fields.filter(f => f.id !== id)
+	}
 </script>
 
-<form>
-    {#each Array(number_of_addresses) as _, i (i)}
-        <input type="text" name="addresses[{i}].street" />
-        <input type="text" name="addresses[{i}].city" />
-        <input type="text" name="addresses[{i}]zip" />
+<form on:submit={handle_submit}>
+    {#each address_fields as field, i (field.id)}
+		<fieldset>
+			<input type="text" name="addresses[{i}].street" />
+			<input type="text" name="addresses[{i}].city" />
+			<input type="text" name="addresses[{i}]zip" />
+			<button type="button" on:click={()=>remove_address(field.id)}>Remove Address</button>
+		</fieldset>
     {/each}
-    <button on:click={() => number_of_addresses++}>Add Address</button>
+	
+    <button type="button" on:click={add_address}>Add Address</button>
 </form>
 ```
 

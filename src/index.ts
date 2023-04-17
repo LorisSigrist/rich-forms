@@ -25,9 +25,17 @@ const defaultOptions: FullParseOptions = {
 
 export type ParseOptions = Partial<FullParseOptions>;
 
+
+/**
+ * Takes a FormData object or a Form Element and uses it to create a deep javascript object.
+ * 
+ * @param form A Form Element, or a FormData object
+ * @param options Parser Options. Import the `ParseOptions` type to see the available options.
+ * @thows SyntaxError if the form data is not properly formatted
+ * @returns POJS
+ */
 export function parse(form: FormData | HTMLFormElement, options : ParseOptions = {}): Record<string, any> {
   const fullOptions = { ...defaultOptions, ...options };
-
   const formData = form instanceof FormData ? form : new FormData(form);
 
   const key_val: Record<string, FormDataEntryValue> = {};

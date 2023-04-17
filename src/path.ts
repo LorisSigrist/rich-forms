@@ -46,8 +46,6 @@ export function parsePath(str: string): string[] {
 export function createPathMap(
 	keyval: Record<string, FormDataEntryValue>
 ): Map<string[], FormDataEntryValue> {
-
-
 	const encountered_paths = new Set<string>();
 
 	const map = new Map<string[], FormDataEntryValue>();

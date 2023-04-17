@@ -29,12 +29,21 @@ type FullParseOptions = {
 	 * @default false
 	 */
 	duplicates_as_array: boolean;
+
+
+	/**
+	 * If true, any empty strings will not be added to the object.
+	 * If false, empty strings will be added to the object.
+	 * @default true
+	 */
+	ignore_empty: boolean;
 };
 
 const defaultOptions: FullParseOptions = {
 	populate_arrays: true,
 	populate_booleans: true,
-	duplicates_as_array: false
+	duplicates_as_array: false,
+	ignore_empty: true
 };
 
 export type ParseOptions = Partial<FullParseOptions>;
@@ -93,6 +102,10 @@ export function parse(
 		}
 	}
 
+	if(fullOptions.ignore_empty) Object.keys(key_val).forEach(key => {
+		if(key_val[key] === "") delete key_val[key];
+	});
+	
 	const path_map = createPathMap(key_val);
 	let object = makeObject(path_map);
 

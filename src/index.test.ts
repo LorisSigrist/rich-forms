@@ -153,3 +153,28 @@ describe("duplicate keys and paths (when duplicates_as_array is set)", () => {
 		});
 	});
 });
+
+describe("ignore empty values", () => {
+	it("should ignore empty values", () => {
+		const formData = new FormData();
+
+		formData.set("name", "John Doe");
+		formData.set("age", "");
+
+		expect(parse(formData, { ignore_empty: true })).toEqual({
+			name: "John Doe"
+		});
+	});
+
+	it("should not ignore empty values when ignore_empty is false", () => {
+		const formData = new FormData();
+
+		formData.set("name", "John Doe");
+		formData.set("age", "");
+
+		expect(parse(formData, { ignore_empty: false })).toEqual({
+			name: "John Doe",
+			age: ""
+		});
+	});
+});

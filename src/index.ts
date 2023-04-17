@@ -20,11 +20,11 @@ type FullParseOptions = {
 	/**
 	 * If true, any duplicate keys will be merged into an array.
 	 * If false, duplicate keys will throw a SyntaxError.
-	 * 
+	 *
 	 * THIS DOES NOT TURN DUPLICATE *PATHS* INTO ARRAYS - Eg Different spellings of the same path,
 	 * only the same spelling.
-	 * 
-	 * Keeping this off is faster, 
+	 *
+	 * Keeping this off is faster,
 	 * but it will break if you are using `multiple` on any of your inputs.
 	 * @default false
 	 */
@@ -57,10 +57,9 @@ export function parse(
 	const key_val: Record<string, FormDataEntryValue> = {};
 
 	if (fullOptions.duplicates_as_array) {
-
 		//Keep track of which keys have been converted to arrays, and which index they are on
 		const keys_converted_to_arrays = new Map<string, number>();
-		for(const [key, value] of formData.entries()) {
+		for (const [key, value] of formData.entries()) {
 			if (key in key_val) {
 				//If the key has already been converted to an array, push the value to the array
 				if (keys_converted_to_arrays.has(key)) {

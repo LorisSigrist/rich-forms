@@ -1,7 +1,7 @@
 /**
  * Deeply traverses the object and converts "true" and "false" strings to booleans.
  * This runs in-place, so the object is modified.
- * 
+ *
  * @param obj The object to traverse and modify
  */
 export function populate_booleans(obj: Record<string, any>): void {

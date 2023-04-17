@@ -119,7 +119,7 @@ describe("parse", () => {
 	});
 });
 
-describe("duplicate keys and paths", () => {
+describe("duplicate keys and paths (when disallowed)", () => {
 	it("should throw a SyntaxError if duplicate keys are encountered", () => {
 		const formData = new FormData();
 
@@ -137,5 +137,19 @@ describe("duplicate keys and paths", () => {
 		formData.set("users.0.name", "Jane Doe");
 
 		expect(() => parse(formData)).toThrow(SyntaxError);
+	});
+});
+
+describe("duplicate keys and paths (when duplicates_as_array is set)", () => {
+	it("should turn duplicate keys into an array", () => {
+		const formData = new FormData();
+
+		//Use append to add duplicate keys - set will overried
+		formData.append("name", "John Doe");
+		formData.append("name", "Jane Doe");
+
+		expect(parse(formData, { duplicates_as_array: true })).toEqual({
+			name: ["John Doe", "Jane Doe"]
+		});
 	});
 });

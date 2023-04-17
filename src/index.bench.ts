@@ -1,7 +1,7 @@
 import { bench, describe, beforeEach } from "vitest";
 import { parse } from "./index";
 
-describe("Nested Form Data", () => {
+describe("Nested Form Data - No Duplicates", () => {
 	let formData: FormData;
 
 	beforeEach(() => {
@@ -45,6 +45,30 @@ describe("Nested Form Data", () => {
 		const data = parse(formData, {
 			populate_arrays: false,
 			populate_booleans: false
+		});
+	});
+
+	bench("parse (arrys, booleans, duplicates)", () => {
+		const data = parse(formData, {
+			populate_arrays: true,
+			populate_booleans: true,
+			duplicates_as_array: true
+		});
+	});
+});
+
+describe("Nested Form Data - Duplicates", () => {
+	let formData: FormData;
+	beforeEach(() => {
+		formData = new FormData();
+		formData.append("key", "value");
+		formData.append("key", "value2");
+		formData.append("key", "value3");
+		formData.append("key", "value4");
+	});
+	bench("parse (duplicates as array)", () => {
+		const data = parse(formData, {
+			duplicates_as_array: true
 		});
 	});
 });

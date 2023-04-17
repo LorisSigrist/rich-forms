@@ -1,7 +1,7 @@
-import { populate_arrays } from "./populate-arrays";
-import { populate_booleans } from "./populate-booleans";
-import { makeObject } from "./populate";
-import { createPathMap } from "./path";
+import { populate_arrays } from "./populate-arrays.js";
+import { populate_booleans } from "./populate-booleans.js";
+import { makeObject } from "./populate.js";
+import { createPathMap } from "./path.js";
 
 type FullParseOptions = {
 	/**

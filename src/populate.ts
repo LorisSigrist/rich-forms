@@ -1,5 +1,3 @@
-import { parsePath } from "./path";
-
 /**
  * Takes a map of key-value pairs where the keys are paths, and converts it into a nested object.
  * @param keyValueMap

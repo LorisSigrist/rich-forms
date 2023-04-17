@@ -13,28 +13,29 @@ type FullParseOptions = {
    * If true, any string that is "true" or "false" will be converted to a boolean.
    * If false, they will remain strings
    * @default true
-  */
+   */
   populate_booleans: boolean;
-
-}
+};
 
 const defaultOptions: FullParseOptions = {
   populate_arrays: true,
   populate_booleans: true,
-}
+};
 
 export type ParseOptions = Partial<FullParseOptions>;
 
-
 /**
  * Takes a FormData object or a Form Element and uses it to create a deep javascript object.
- * 
+ *
  * @param form A Form Element, or a FormData object
  * @param options Parser Options. Import the `ParseOptions` type to see the available options.
  * @thows SyntaxError if the form data is not properly formatted
  * @returns POJS
  */
-export function parse(form: FormData | HTMLFormElement, options : ParseOptions = {}): Record<string, any> {
+export function parse(
+  form: FormData | HTMLFormElement,
+  options: ParseOptions = {}
+): Record<string, any> {
   const fullOptions = { ...defaultOptions, ...options };
   const formData = form instanceof FormData ? form : new FormData(form);
 
@@ -45,7 +46,7 @@ export function parse(form: FormData | HTMLFormElement, options : ParseOptions =
   }
 
   let object = makeObject(key_val);
-  if(fullOptions.populate_arrays) object =  populate_arrays(object);
-  if(fullOptions.populate_booleans) populate_booleans(object);
+  if (fullOptions.populate_arrays) object = populate_arrays(object);
+  if (fullOptions.populate_booleans) populate_booleans(object);
   return object;
 }

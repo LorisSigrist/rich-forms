@@ -36,6 +36,7 @@ console.log(data);
 }
 */
 ```
+
 It also integrates very well with component libraries like Svelte and Vue.
 
 ```html
@@ -54,9 +55,9 @@ It also integrates very well with component libraries like Svelte and Vue.
 
 	function add_address() {
 		address_fields.push({ id: Math.random() })
-		address_fields = address_fields  
+		address_fields = address_fields
 	}
-	
+
 	function remove_address(id) {
 		address_fields = address_fields.filter(f => f.id !== id)
 	}
@@ -72,7 +73,7 @@ It also integrates very well with component libraries like Svelte and Vue.
 			<button type="button" on:click={()=>remove_address(field.id)}>Remove Address</button>
 		</fieldset>
     {/each}
-	
+
     <button type="button" on:click={add_address}>Add Address</button>
 </form>
 ```

@@ -42,6 +42,7 @@ export function parse(
 	const key_val: Record<string, FormDataEntryValue> = {};
 
 	for (const [key, value] of formData.entries()) {
+		if (key in key_val) throw new SyntaxError(`Duplicate key: ${key}`);
 		key_val[key] = value;
 	}
 

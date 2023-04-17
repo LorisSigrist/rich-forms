@@ -118,3 +118,15 @@ describe("parse", () => {
 		});
 	});
 });
+
+describe("duplicate keys", () => {
+	it("should throw a SyntaxError if duplicate keys are encountered", () => {
+		const formData = new FormData();
+
+		//Use append to add duplicate keys - set will overried
+		formData.append("name", "John Doe");
+		formData.append("name", "Jane Doe");
+
+		expect(() => parse(formData)).toThrow(SyntaxError);
+	});
+});

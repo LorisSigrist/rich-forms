@@ -80,6 +80,7 @@ It also integrates very well with component libraries like Svelte and Vue.
         </fieldset>
     {/each}
     <button type="button" on:click={add_address}>Add Address</button>
+    <button>Submit</button>
 </form>
 ```
 

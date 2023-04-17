@@ -2,6 +2,12 @@
 	"name": "rich-forms",
 	"version": "0.0.1",
 	"description": "A framework agnostic library for modeling complex data in HTML forms.",
+	"author": "Loris Sigrist",
+	"repository": {
+		"type": "git",
+		"url": "https://www.github.com/LorisSigrist/rich-forms.git"
+	},
+	"homepage": "https://www.github.com/LorisSigrist/rich-forms#readme",
 	"type": "module",
 	"main": "dist/index.js",
 	"module": "dist/index.js",

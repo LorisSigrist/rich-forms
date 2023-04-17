@@ -50,8 +50,8 @@ It also integrates very well with component libraries like Svelte and Vue.
         console.log(data); // { addresses: [ {street: '123 Main St', city: 'Anytown', zip: '12345'}] }
     }
 
-	let address_fields = [{id: 0}];
-	
+    let address_fields = [{id: 0}];
+
 	function add_address() {
 		address_fields.push({ id: Math.random() })
 		address_fields = address_fields  
@@ -65,6 +65,7 @@ It also integrates very well with component libraries like Svelte and Vue.
 <form on:submit={handle_submit}>
     {#each address_fields as field, i (field.id)}
 		<fieldset>
+            <legend>Address {i}</legend>
 			<input type="text" name="addresses[{i}].street" />
 			<input type="text" name="addresses[{i}].city" />
 			<input type="text" name="addresses[{i}]zip" />

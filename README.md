@@ -8,7 +8,6 @@ a key-value based FormData object into a rich, nested object.
 
 It uses the `name` attribute of the form elements to index into the final object.
 
-
 ## Installation
 
 ```bash
@@ -65,7 +64,7 @@ It also integrates very well with component libraries like Svelte and Vue.
         address_fields = address_fields
     }
 
-    function remove_address(id) {       
+    function remove_address(id) {
         address_fields = address_fields.filter(f => f.id !== id)
     }
 </script>
@@ -94,23 +93,23 @@ import { parse } from "rich-forms";
 import { z } from "zod";
 
 const AddressSchema = z.object({
-    street: z.string(),
-    city: z.string(),
-    zip: z.string(),
+	street: z.string(),
+	city: z.string(),
+	zip: z.string()
 });
 
 const UserSchema = z.object({
-    name: z.string(),
-    addresses: z.array(AddressSchema),
+	name: z.string(),
+	addresses: z.array(AddressSchema)
 });
 
 const form = document.querySelector("form");
 const formData = new FormData(form);
 
 try {
-    const data = parse(formData);
-    const user = UserSchema.parse(data); // Validates that the Data has the correct shape. Returned object is typed.
+	const data = parse(formData);
+	const user = UserSchema.parse(data); // Validates that the Data has the correct shape. Returned object is typed.
 } catch (error) {
-    //Handle invalid data
+	//Handle invalid data
 }
 ```

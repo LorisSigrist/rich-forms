@@ -106,15 +106,6 @@
 		// "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
 		"skipLibCheck": true /* Skip type checking all .d.ts files. */
 	},
-	"exclude": [
-		"**/*.spec.ts",
-		"**/*.spec.tsx",
-		"**/*.test.ts",
-		"**/*.test.tsx",
-		"**/*.test.js",
-		"**/*.test.jsx",
-		"**/*.spec.js",
-		"**/*.spec.jsx"
-	],
+	"exclude": ["**/*.test.ts", "**/*.bench.ts", "**/*.spec.ts"],
 	"include": ["src/**/*"]
 }

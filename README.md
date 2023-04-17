@@ -106,6 +106,11 @@ const UserSchema = z.object({
 
 const form = document.querySelector("form");
 const formData = new FormData(form);
-const data = parse(formData);
-const user = UserSchema.parse(data); // Validates that the Data has the correct shape
+
+try {
+    const data = parse(formData);
+    const user = UserSchema.parse(data); // Validates that the Data has the correct shape. Returned object is typed.
+} catch (error) {
+    //Handle invalid data
+}
 ```

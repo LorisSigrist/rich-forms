@@ -12,10 +12,10 @@ It uses the `name` attribute of the form elements to index into the final object
 
 ```html
 <form>
-  <input type="text" name="name" />
-  <input type="text" name="address.street" />
-  <input type="text" name="address.city" />
-  <input type="text" name="address.zip" />
+	<input type="text" name="name" />
+	<input type="text" name="address.street" />
+	<input type="text" name="address.city" />
+	<input type="text" name="address.zip" />
 </form>
 ```
 

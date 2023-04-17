@@ -1,9 +1,9 @@
 # Rich Forms
 
-A simple, framework-agnostic form-processing library for front-end developers.
+A simple, framework-agnostic form-processing library for front-end applications.
 
 Have you ever tried to make a form to input an array of Addresses? It's was a pain, right?
-Modeling nested arrays and objects in HTML forms is a pain. Rich forms allows you to parse
+Modeling nested arrays and objects in HTML forms tends to be. `rich-forms` allows you to parse
 a key-value based FormData object into a rich, nested object.
 
 It uses the `name` attribute of the form elements to index into the final object.
@@ -114,3 +114,62 @@ try {
 	//Handle invalid data
 }
 ```
+
+## Syntax
+
+The path of a form-elements value is determined by it's `name` attribute.
+You can write paths the same way you would in JavaScript.
+
+- Use `.` to index into an object
+- Or Use `[0]` to index into an object
+
+Using only numbers to index into an object will result in an array being created.
+
+```html
+<form>
+	<input type="text" name="name" />
+	<input type="text" name="addresses[0].street" />
+	<input type="text" name="addresses[0].city" />
+	<input type="text" name="addresses[0].zip" />
+	<input type="text" name="addresses[1].street" />
+	<input type="text" name="addresses[1].city" />
+	<input type="text" name="addresses[1].zip" />
+</form>
+```
+
+Becomes
+
+```javascript
+{
+    name: 'John Doe',
+    addresses: [
+        {
+            street: '123 Main St',
+            city: 'Anytown',
+            zip: '12345'
+        },
+        {
+            street: '123 Main St',
+            city: 'Anytown',
+            zip: '12345'
+        }
+    ]
+}
+```
+
+## API
+
+You can pass a `FormData` object, or an HTMLFormElement to the `parse` function.
+
+Additionally, you can optionally pass an options object as the second argument.
+
+```javascript
+//Default options shown
+parse(formData, {
+    populate_arrays: true,
+    populate_booleans: true,
+    duplicates_as_array: false; //If you have inputs with `multiple` set, then set this to true
+})
+```
+
+If invalid syntax is used in the `name` attribute, a `SyntaxError` will be thrown.

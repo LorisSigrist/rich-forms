@@ -25,5 +25,8 @@
 	},
 	"files": [
 		"dist"
+	], 
+	"keywords": [
+		"forms"
 	]
 }

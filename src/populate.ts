@@ -27,8 +27,6 @@ export function makeObject(keyValueMap: Record<string, FormDataEntryValue>): Rec
         }
     }
 
-    populate_booleans(obj);
-
-    return populate_arrays(obj);
+    return obj;
 }
 

@@ -11,10 +11,15 @@ describe("makeObject", () => {
     });
 
     it("should populate a simple object with a dot and a bracket", () => {
-        expect(makeObject({ "hello[0]": "test" })).toEqual({ hello: ["test"] });
+        expect(makeObject({ "hello[0]": "test" })).toEqual({ hello: { 
+            0: "test"
+        } });
     });
 
     it("should populate an object when given multiple paths", () => {
-        expect(makeObject({ "hello.world[0]": "test", "hello.world[1]": "test2" })).toEqual({ hello: { world: ["test", "test2"] } });
+        expect(makeObject({ "hello.world[0]": "test", "hello.world[1]": "test2" })).toEqual({ hello: { world: {
+            0: "test",
+            1: "test2",
+        } } });
     });
 });

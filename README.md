@@ -75,7 +75,7 @@ It also integrates very well with component libraries like Svelte and Vue.
             <legend>Address {i}</legend>
             <input type="text" name="addresses[{i}].street" />
             <input type="text" name="addresses[{i}].city" />
-            <input type="text" name="addresses[{i}]zip" />
+            <input type="text" name="addresses[{i}].zip" />
             <button type="button" on:click={()=>remove_address(field.id)}>Remove Address</button>
         </fieldset>
     {/each}

@@ -84,6 +84,8 @@ It also integrates very well with component libraries like Svelte and Vue.
 </form>
 ```
 
+See this example in action on [Svelte REPL](https://svelte.dev/repl/6c99138b765b42778a125007d0060f34?version=3.58.0).
+
 Rich-Forms only gives you the raw objects / arrays, it does not provide any validation. We recommend using
 a schema-validation library like [Zod](https://www.zod.dev/) to validate the data.
 

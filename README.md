@@ -171,6 +171,7 @@ parse(formData, {
     populate_arrays: true,
     populate_booleans: true,
     duplicates_as_array: false; //If you have inputs with `multiple` set, then set this to true
+    ignore_empty: true
 })
 ```
 
